@@ -63,6 +63,9 @@ sudo pip install https://s3.amazonaws.com/cloudformation-examples/aws-cfn-bootst
 
 sudo ln -s /root/aws-cfn-bootstrap-latest/init/ubuntu/cfn-hup /etc/init.d/cfn-hup
 
+# Required to avoid kube-dns issues
+# sudo ln -s /run/resolvconf /run/systemd/resolve
+
 ################################################################################
 ### iptables ###################################################################
 ################################################################################

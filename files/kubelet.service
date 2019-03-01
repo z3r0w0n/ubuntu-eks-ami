@@ -13,7 +13,6 @@ ExecStart=/usr/bin/kubelet --cloud-provider aws \
     --allow-privileged=true \
     --kubeconfig /var/lib/kubelet/kubeconfig \
     --container-runtime docker \
-    --resolv-conf=/run/systemd/resolve/resolv.conf \
     --network-plugin cni $KUBELET_ARGS $KUBELET_EXTRA_ARGS
 
 Restart=on-failure

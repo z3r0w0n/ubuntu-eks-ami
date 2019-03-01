@@ -1,8 +1,8 @@
 {
   "variables": {
-    "aws_region": "us-west-2",
+    "aws_region": "us-east-1",
     "ami_prefix": "",
-    "ami_name": "amazon-eks-ubuntu-18.04-node",
+    "ami_name": "amazon-eks-ubuntu-16.04-node",
     "kube_version": "1.11.5",
     "creator": "{{env `USER`}}",
     "instance_type": "c5.large",
@@ -27,7 +27,8 @@
       "ami_groups": "all",
       "source_ami_filter": {
         "filters": {
-          "name": "ubuntu/images/*ubuntu-bionic-18.04-amd64-server-*",
+          "architecture": "x86_64",
+          "name": "ubuntu/images/hvm-ssd/ubuntu-xenial-16.04-amd64-*",
           "root-device-type": "ebs",
           "state": "available",
           "virtualization-type": "hvm"
@@ -37,6 +38,14 @@
       },
       "instance_type": "{{user `instance_type`}}",
       "launch_block_device_mappings": [
+        {
+          "device_name": "/dev/xvda",
+          "volume_type": "gp2",
+          "volume_size": 4,
+          "delete_on_termination": true
+        }
+      ],
+      "ami_block_device_mappings": [
         {
           "device_name": "/dev/xvda",
           "volume_type": "gp2",
@@ -55,7 +64,7 @@
           "created": "{{timestamp}}"
       },
       "ami_name": "{{user `ami_name`}}-{{timestamp}}",
-      "ami_description": "EKS Kubernetes Worker AMI with Ubuntu 18.04 image"
+      "ami_description": "EKS Kubernetes Worker AMI with Ubuntu 16.04 image"
     }
   ],
 

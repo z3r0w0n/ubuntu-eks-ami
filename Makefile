@@ -2,7 +2,7 @@ KUBERNETES_VERSION ?= 1.10.3
 
 DATE ?= $(shell date +%Y-%m-%d)
 
-AWS_DEFAULT_REGION = us-west-2
+AWS_DEFAULT_REGION = us-east-1
 
 .PHONY: all validate ami 1.11 1.10
 
